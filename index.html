@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz JSON Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Quiz JSON Generator</h1>
+            <p class="subtitle">Elegant Quiz Generator</p>
+        </div>
+        
+        <div class="main-layout">
+            <div class="columns-container">
+                <!-- Coluna Esquerda - Editor -->
+                <div class="editor-column">
+                    <div class="main">
+                        <!-- Language Selection Section -->
+                        <div class="card language-section">
+                            <h2>Language Selection</h2>
+                            <div class="form-group">
+                                <label for="languageSelect">Select Language</label>
+                                <select id="languageSelect" onchange="changeLanguage()">
+                                    <option value="en">English</option>
+                                    <option value="pt">Portuguese</option>
+                                    <option value="it">Italian</option>
+                                    <option value="es">Spanish</option>
+                                    <option value="de">German</option>
+                                    <option value="fr">French</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Questions and Answers Section -->
+                        <div class="card questions-section">
+                            <div class="card-header">
+                                <h2>Questions and Answers</h2>
+                                <div class="header-actions">
+                                    <span class="question-count">0 questions</span>
+                                    <button class="btn-primary" onclick="addQuestion()">Add Question</button>
+                                </div>
+                            </div>
+                            <div class="questions-container" id="questionsContainer">
+                                <!-- Questions will be added here -->
+                            </div>
+                        </div>
+
+                        <!-- Colors Section -->
+                        <div class="card colors-section">
+                            <h2>Color Configuration</h2>
+                            <div class="colors-grid">
+                                <div class="color-input-group">
+                                    <label for="buttonColor">Button Color</label>
+                                    <div class="color-input-wrapper">
+                                        <input type="color" id="buttonColor" value="#1D4ED8">
+                                        <input type="text" id="buttonColorText" value="#1D4ED8" maxlength="7">
+                                    </div>
+                                </div>
+                                <div class="color-input-group">
+                                    <label for="progressColor">Progress Color</label>
+                                    <div class="color-input-wrapper">
+                                        <input type="color" id="progressColor" value="#1D4ED8">
+                                        <input type="text" id="progressColorText" value="#1D4ED8" maxlength="7">
+                                    </div>
+                                </div>
+                                <div class="color-input-group">
+                                    <label for="buttonTextColor">Button Text Color</label>
+                                    <div class="color-input-wrapper">
+                                        <input type="color" id="buttonTextColor" value="#ffffff">
+                                        <input type="text" id="buttonTextColorText" value="#ffffff" maxlength="7">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Subscribe Form Section -->
+                        <div class="card subscribe-section">
+                            <h2>Subscribe Form</h2>
+                            <div class="toggle-group">
+                                <label class="toggle-label">
+                                    <input type="checkbox" id="subscribeFormEnabled">
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-text">Enable Subscribe Form</span>
+                                </label>
+                            </div>
+                            <div class="subscribe-fields" id="subscribeFields">
+                                <div class="form-group">
+                                    <label for="cta">CTA Text</label>
+                                    <input type="text" id="cta" value="View offers →" maxlength="30">
+                                    <div class="char-counter">0/30</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="headline">Headline</label>
+                                    <input type="text" id="headline" value="We found offers" maxlength="30">
+                                    <div class="char-counter">0/30</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="namePlaceholder">Name Placeholder</label>
+                                    <input type="text" id="namePlaceholder" value="Your name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="emailPlaceholder">Email Placeholder</label>
+                                    <input type="text" id="emailPlaceholder" value="Your email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phonePlaceholder">Phone Placeholder</label>
+                                    <input type="text" id="phonePlaceholder" value="Your phone">
+                                </div>
+                                <div class="toggle-options">
+                                    <div class="checkbox-container">
+                                        <input type="checkbox" id="showName" checked>
+                                        <label class="checkbox-label" for="showName">Show Name</label>
+                                    </div>
+                                    <div class="checkbox-container">
+                                        <input type="checkbox" id="showEmail">
+                                        <label class="checkbox-label" for="showEmail">Show Email</label>
+                                    </div>
+                                    <div class="checkbox-container">
+                                        <input type="checkbox" id="showPhone" checked>
+                                        <label class="checkbox-label" for="showPhone">Show Phone</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footnote Section -->
+                        <div class="card footnote-section">
+                            <h2>Footnote</h2>
+                            <div class="form-group">
+                                <label for="footnote">Footnote Text</label>
+                                <input type="text" id="footnote" value="View ad to continue">
+                            </div>
+                        </div>
+
+                        <!-- Generate Section -->
+                        <div class="card generate-section">
+                            <button class="btn-generate" onclick="generateJSON()">Generate JSON</button>
+                        </div>
+
+                        <!-- JSON Output Section -->
+                        <div class="card json-section" id="jsonSection" style="display: none;">
+                            <div class="json-header">
+                                <button class="btn-copy" onclick="copyJSON()">Copy JSON</button>
+                                <button class="btn-download" onclick="downloadJSON()">Download JSON</button>
+                            </div>
+                            <pre class="json-output" id="jsonOutput"></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna Direita - Visualizador -->
+                <div class="viewer-column">
+                    <div class="quiz-viewer">
+                        <div class="viewer-header">
+                            <h2>Quiz Preview</h2>
+                            <div class="viewer-controls">
+                                <button class="btn-viewer" onclick="showQuestionView()">Questions</button>
+                                <button class="btn-viewer" onclick="showLoadingView()">Loading</button>
+                                <button class="btn-viewer" onclick="showFormView()">Form</button>
+                            </div>
+                        </div>
+                        
+                        <div class="quiz-container">
+                            <!-- Question View -->
+                            <div class="quiz-view question-view" id="questionView">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                </div>
+                                
+                                <div class="question-content">
+                                    <h3 class="question-text" id="questionText">When do you need the money?</h3>
+                                    
+                                    <div class="options-container" id="optionsContainer">
+                                        <button class="option-btn" id="option1">Today</button>
+                                        <button class="option-btn" id="option2">Within 3 days</button>
+                                        <button class="option-btn" id="option3">Within a week</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Loading View -->
+                            <div class="quiz-view loading-view" id="loadingView" style="display: none;">
+                                <div class="loading-content">
+                                    <div class="loading-spinner"></div>
+                                    <h3 class="loading-text">Looking for trusted loan providers in your area...</h3>
+                                </div>
+                            </div>
+
+                            <!-- Form View -->
+                            <div class="quiz-view form-view" id="formView" style="display: none;">
+                                <div class="form-content">
+                                    <h3 class="form-headline" id="formHeadline">We found loan deals based on your answers</h3>
+                                    
+                                    <div class="form-fields" id="formFields">
+                                        <div class="form-field" id="nameField">
+                                            <input type="text" placeholder="Your name" class="form-input">
+                                        </div>
+                                        <div class="form-field" id="emailField" style="display: none;">
+                                            <input type="email" placeholder="Your email" class="form-input">
+                                        </div>
+                                        <div class="form-field" id="phoneField">
+                                            <input type="tel" placeholder="Your phone" class="form-input">
+                                        </div>
+                                    </div>
+                                    
+                                    <button class="form-cta" id="formCta">View offers →</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
