@@ -321,17 +321,86 @@ body {
     color: #64748b;
 }
 
-.questions-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
+/* Question Item Styles */
 .question-item {
     background: #f8fafc;
     border-radius: 4px;
     padding: 12px;
     border: 1px solid #e2e8f0;
+    cursor: grab;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.question-item:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);
+}
+
+.question-item:active {
+    cursor: grabbing;
+}
+
+.question-item.dragging {
+    opacity: 0.5;
+    transform: rotate(5deg);
+    z-index: 1000;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.question-item.drag-over {
+    border-color: #10b981;
+    background: #f0fdf4;
+    transform: scale(1.02);
+}
+
+
+
+/* Drop zone indicator */
+.drop-zone {
+    height: 4px;
+    background: transparent;
+    transition: all 0.2s ease;
+    margin: 2px 0;
+}
+
+.drop-zone.active {
+    background: #10b981;
+    height: 8px;
+    border-radius: 2px;
+}
+
+/* Questions container with drag support */
+.questions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 50px;
+}
+
+.questions-container.dragging {
+    background: #f8fafc;
+    border-radius: 4px;
+    padding: 8px;
+    border: 2px dashed #cbd5e1;
+}
+
+.questions-container:empty::after {
+    content: 'Add questions and drag to reorder them';
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    padding: 20px;
+    font-style: italic;
+}
+
+/* Drag hint */
+.drag-hint {
+    font-size: 0.7rem;
+    color: #64748b;
+    text-align: center;
+    margin-top: 4px;
+    font-style: italic;
 }
 
 .question-header {
