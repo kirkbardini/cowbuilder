@@ -13,7 +13,7 @@ const languageTranslations = {
         phonePlaceholder: "Your phone"
     },
     pt: {
-        footnote: "Visualizar anúncio para continuar",
+        footnote: "Assista a um anúncio para continuar",
         namePlaceholder: "Seu nome",
         emailPlaceholder: "Seu email",
         phonePlaceholder: "Seu telefone"
