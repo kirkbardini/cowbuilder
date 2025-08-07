@@ -702,6 +702,10 @@ function showQuestionView() {
     hideAllViews();
     document.getElementById('questionView').style.display = 'block';
     setActiveButton('Questions');
+    
+    // Reset to first question when showing question view
+    currentQuestionIndex = 0;
+    
     updateViewer();
 }
 
