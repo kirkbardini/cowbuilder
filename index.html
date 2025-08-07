@@ -9,11 +9,13 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <header class="header">
             <div class="header-content">
                 <div class="header-text">
-                    <h1 class="title">Quiz JSON Generator</h1>
-                    <p class="subtitle">Elegant Quiz Generator</p>
+                    <div class="header-logo">
+                        <img src="json-6.png" alt="Logo" class="logo-img">
+                        <h1 class="title">Quiz JSON Generator</h1>
+                    </div>
                 </div>
                 <div class="theme-toggle">
                     <button id="themeToggle" class="btn-theme" onclick="toggleTheme()">
@@ -21,7 +23,7 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </header>
         
         <div class="main-layout">
             <div class="columns-container">
@@ -177,17 +179,17 @@
                         <div class="quiz-container">
                             <!-- Question View -->
                             <div class="quiz-view question-view" id="questionView">
-                                <div class="progress-bar">
+                                <div class="progress-bar quiz-preview-progress">
                                     <div class="progress-fill" id="progressFill"></div>
                                 </div>
                                 
                                 <div class="question-content">
-                                    <h3 class="question-text" id="questionText">When do you need the money?</h3>
+                                    <h3 class="question-text quiz-preview-question" id="questionText">When do you need the money?</h3>
                                     
-                                    <div class="options-container" id="optionsContainer">
-                                        <button class="option-btn" id="option1">Today</button>
-                                        <button class="option-btn" id="option2">Within 3 days</button>
-                                        <button class="option-btn" id="option3">Within a week</button>
+                                    <div class="quiz-preview-options" id="optionsContainer">
+                                        <button class="option-btn quiz-preview-option" id="option1">Today</button>
+                                        <button class="option-btn quiz-preview-option" id="option2">Within 3 days</button>
+                                        <button class="option-btn quiz-preview-option" id="option3">Within a week</button>
                                     </div>
                                 </div>
                             </div>
@@ -196,28 +198,28 @@
                             <div class="quiz-view loading-view" id="loadingView" style="display: none;">
                                 <div class="loading-content">
                                     <div class="loading-spinner"></div>
-                                    <h3 class="loading-text">Looking for trusted loan providers in your area...</h3>
+                                    <h3 class="loading-text quiz-preview-loading">Looking for trusted loan providers in your area...</h3>
                                 </div>
                             </div>
 
                             <!-- Form View -->
                             <div class="quiz-view form-view" id="formView" style="display: none;">
                                 <div class="form-content">
-                                    <h3 class="form-headline" id="formHeadline">We found loan deals based on your answers</h3>
+                                    <h3 class="form-headline quiz-preview-headline" id="formHeadline">We found loan deals based on your answers</h3>
                                     
                                     <div class="form-fields" id="formFields">
                                         <div class="form-field" id="nameField">
-                                            <input type="text" placeholder="Your name" class="form-input">
+                                            <input type="text" placeholder="Your name" class="quiz-preview-input">
                                         </div>
                                         <div class="form-field" id="emailField" style="display: none;">
-                                            <input type="email" placeholder="Your email" class="form-input">
+                                            <input type="email" placeholder="Your email" class="quiz-preview-input">
                                         </div>
                                         <div class="form-field" id="phoneField">
-                                            <input type="tel" placeholder="Your phone" class="form-input">
+                                            <input type="tel" placeholder="Your phone" class="quiz-preview-input">
                                         </div>
                                     </div>
                                     
-                                    <button class="form-cta" id="formCta">View offers →</button>
+                                    <button class="form-cta quiz-preview-cta" id="formCta">View offers →</button>
                                 </div>
                             </div>
                         </div>

@@ -628,7 +628,7 @@ function updateQuestionView(data) {
             optionsContainer.innerHTML = '';
             currentQuestion.options.forEach((option, index) => {
                 const button = document.createElement('button');
-                button.className = 'option-btn';
+                button.className = 'option-btn quiz-preview-option';
                 button.textContent = option;
                 button.style.backgroundColor = data.buttonColor;
                 button.style.color = data.buttonTextColor;
