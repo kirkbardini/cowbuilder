@@ -603,7 +603,8 @@ function collectFormData() {
             phone_placeholder: document.getElementById('phonePlaceholder')?.value || '',
             show_name: document.getElementById('showName')?.checked || false,
             show_email: document.getElementById('showEmail')?.checked || false,
-            show_phone: document.getElementById('showPhone')?.checked || false
+            show_phone: document.getElementById('showPhone')?.checked || false,
+            enforce_validation: document.getElementById('enforceValidation')?.checked || false
         } : null,
         footnote: document.getElementById('footnote')?.value || ''
     };
