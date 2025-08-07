@@ -46,6 +46,7 @@ const languageTranslations = {
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
+    setupTheme();
     setupColorInputs();
     setupColorValidation();
     setupSubscribeFormToggle();
@@ -205,6 +206,31 @@ function updateCharCounter(input, counter) {
         counter.classList.add('limit');
     } else {
         counter.classList.remove('limit');
+    }
+}
+
+// Setup theme functionality
+function setupTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+}
+
+// Toggle theme function
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+}
+
+// Update theme icon
+function updateThemeIcon(theme) {
+    const themeIcon = document.querySelector('.theme-icon');
+    if (themeIcon) {
+        themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
     }
 }
 
