@@ -689,7 +689,7 @@ function updateFormView(data) {
         
         if (nameField) {
             nameField.style.display = data.subscribeForm.show_name ? 'block' : 'none';
-            const nameInput = nameField.querySelector('.form-input');
+            const nameInput = nameField.querySelector('.quiz-preview-input');
             if (nameInput) {
                 nameInput.placeholder = data.subscribeForm.name_placeholder || 'Your name';
             }
@@ -697,7 +697,7 @@ function updateFormView(data) {
         
         if (emailField) {
             emailField.style.display = data.subscribeForm.show_email ? 'block' : 'none';
-            const emailInput = emailField.querySelector('.form-input');
+            const emailInput = emailField.querySelector('.quiz-preview-input');
             if (emailInput) {
                 emailInput.placeholder = data.subscribeForm.email_placeholder || 'Your email';
             }
@@ -705,7 +705,7 @@ function updateFormView(data) {
         
         if (phoneField) {
             phoneField.style.display = data.subscribeForm.show_phone ? 'block' : 'none';
-            const phoneInput = phoneField.querySelector('.form-input');
+            const phoneInput = phoneField.querySelector('.quiz-preview-input');
             if (phoneInput) {
                 phoneInput.placeholder = data.subscribeForm.phone_placeholder || 'Your phone';
             }
